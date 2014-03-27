@@ -5,6 +5,8 @@
 *.exe
 *.o
 
+#ignore output files
+output*.txt
 
 # =========================
 # Windows detritus
