@@ -31,7 +31,9 @@ public:
 	///Setter untuk detik. Detik harus bernilai 0 <= Detik < 59. Jika diluar range tersebut, akan diabaikan
 	void setDetik(int detik);
 
-	bool operator>=(const Time T);
+	bool operator>=(const Time T) const;
+
+	bool operator==(const Time&) const;
 private:
 	///Variabel yang berisi jam.
 	int jam;

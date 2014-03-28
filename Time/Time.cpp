@@ -61,7 +61,7 @@ void Time::setJam(int jam)
 	}
 }
 
-bool Time::operator>=(const Time T)
+bool Time::operator>=(const Time T) const
 {
 	//Cek jam
 	if (this->jam < T.jam)
@@ -90,6 +90,11 @@ bool Time::operator>=(const Time T)
 			}
 		} 
 	}
+}
+
+bool Time::operator==(const Time& t) const
+{
+	return ((this->detik == t.detik) && (this->menit == t.menit) && (this->jam == t.jam));
 }
 
 Time::~Time()

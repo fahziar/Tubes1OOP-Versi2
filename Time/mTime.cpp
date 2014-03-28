@@ -43,6 +43,9 @@ int main(int argc, char const *argv[])
 			case 5:
 				cout << (t1 >= t2) << endl;
 				break;
+			case 6:
+				cout << (t1 == t2) << endl;
+				break;
 			default:
 				break;
 		}
