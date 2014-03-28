@@ -39,6 +39,9 @@ int main()
 			case 4:
 				quit = true;
 				break;
+			case 5:
+				cout << (date1 >= date2) << endl;
+				break;
 			default:
 				break;
 		}
