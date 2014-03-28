@@ -29,7 +29,7 @@ Date& Date::operator= (const Date& date)
 	return *this;
 }
 
-bool Date::operator>= (const Date& date)
+bool Date::operator>= (const Date& date) const
 {
 	//Cek Tahun
 	if (this->tahun < date.tahun)
@@ -58,6 +58,11 @@ bool Date::operator>= (const Date& date)
 			}
 		} 
 	}
+}
+
+bool Date::operator== (const Date& date) const
+{
+	return ((this->hari == date.hari) && (this->bulan == date.bulan) && (this->tahun == date.tahun));
 }
 
 int Date::getHari()

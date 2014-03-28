@@ -21,7 +21,9 @@ public:
 	///Operator Asignment date.
 	Date& operator= (const Date&);
 
-	bool operator>= (const Date&);
+	bool operator>= (const Date&) const;
+
+	bool operator== (const Date&) const;
 
 	///Getter untuk hari.
 	int getHari();

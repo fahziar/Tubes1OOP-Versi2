@@ -42,6 +42,8 @@ int main()
 			case 5:
 				cout << (date1 >= date2) << endl;
 				break;
+			case 6:
+				cout << (date1 == date2) << endl;
 			default:
 				break;
 		}
