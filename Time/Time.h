@@ -30,6 +30,8 @@ public:
 	void setMenit(int menit);
 	///Setter untuk detik. Detik harus bernilai 0 <= Detik < 59. Jika diluar range tersebut, akan diabaikan
 	void setDetik(int detik);
+
+	bool operator>=(const Time T);
 private:
 	///Variabel yang berisi jam.
 	int jam;

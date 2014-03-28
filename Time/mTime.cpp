@@ -40,6 +40,9 @@ int main(int argc, char const *argv[])
 			case 4:
 				quit = true;
 				break;
+			case 5:
+				cout << (t1 >= t2) << endl;
+				break;
 			default:
 				break;
 		}
