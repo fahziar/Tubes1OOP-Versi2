@@ -4,7 +4,7 @@
 using namespace std;
 int main(int argc, char const *argv[])
 {
-	DateTime dt;
+	DateTime dt, dt2;
 	int x, y, z;
 
 	int input;
@@ -45,6 +45,24 @@ int main(int argc, char const *argv[])
 				break;
 			case 3:
 				quit = true;
+				break;
+			case 4:
+				cin >> x;
+				cin >> y;
+				cin >> z;
+
+				//Time t(x, y, z);
+				dt2.setTime(Time(x, y, z));
+
+				cin >> x;
+				cin >> y;
+				cin >> z;
+
+				//Date d(x, y, z);
+				dt2.setDate(Date(x, y, z));
+				break;
+			case 5:
+				cout << (dt2 >= dt) << endl;
 				break;
 			default:
 				break;

@@ -23,3 +23,18 @@ Time DateTime::getTime()
 {
 	return this->time;
 }
+
+bool DateTime::operator>=(const DateTime& dt)
+{
+	if (this->date >= dt.date)
+	{
+		if (this->date == dt.date)
+		{
+			return this->time >= dt.time;
+		} else {
+			return true;
+		}
+	} else {
+		return false;
+	}
+}

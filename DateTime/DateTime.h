@@ -21,6 +21,9 @@ public:
 	///Setter untuk mendapatkan objek time
 	Time getTime();
 
+	//Operator
+	bool operator>=(const DateTime&);
+
 	
 private:
 	///Variabel untuk menampung objek date
