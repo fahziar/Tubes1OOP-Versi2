@@ -39,6 +39,9 @@ int main(int argc, char const *argv[])
 			case 7:
 				quit = true;
 				break;
+			case 8:
+				cout << teller.getPanjangAntrian() << endl;
+				break;
 			default:
 				break;
 		}

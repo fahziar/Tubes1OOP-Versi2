@@ -15,5 +15,6 @@ public:
 	virtual void setState(int state) = 0;
 	///Mengeprint isi antrian ke layar
 	virtual void print() = 0;
+	virtual int getPanjangAntrian() = 0;
 };
 #endif

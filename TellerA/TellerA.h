@@ -26,6 +26,7 @@ public:
 	virtual void setState(int state);
 	///Mengeprint isi antrian ke layar
 	virtual void print();
+	virtual int getPanjangAntrian();
 };
 
 template <typename T>
@@ -89,5 +90,11 @@ void TellerA<T>::print()
 		temp = tempQueue.Delete();
 		q.Add(temp);
 	}
+}
+
+template <typename T>
+int TellerA<T>::getPanjangAntrian()
+{
+	return q.NbElement();
 }
 #endif

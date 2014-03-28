@@ -28,6 +28,8 @@ public:
 	///Mengeprint isi antrian ke layar
 	virtual void print();
 
+	virtual int getPanjangAntrian();
+
 };
 
 template <typename T>
@@ -107,5 +109,11 @@ void TellerB<T>::print()
 		tempQueue.pop();
 		q.push(temp);
 	}
+}
+
+template <typename T>
+int TellerB<T>::getPanjangAntrian()
+{
+	return q.size();
 }
 #endif
