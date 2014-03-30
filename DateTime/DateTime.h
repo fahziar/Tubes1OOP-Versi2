@@ -22,7 +22,7 @@ public:
 	Time getTime();
 
 	//Operator
-	bool operator>=(const DateTime&);
+	bool operator>=(const DateTime&) const;
 
 	
 private:

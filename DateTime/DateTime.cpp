@@ -24,7 +24,7 @@ Time DateTime::getTime()
 	return this->time;
 }
 
-bool DateTime::operator>=(const DateTime& dt)
+bool DateTime::operator>=(const DateTime& dt) const
 {
 	if (this->date >= dt.date)
 	{
