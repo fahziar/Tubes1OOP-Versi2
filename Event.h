@@ -2,9 +2,11 @@
 #define EVENT_OOP_H
 #include "DateTime.h"
 #include "Teller.h"
+#include <vector>
 /*! \brief
 	Kelas abstract untuk merepresentasikan event.
 */
+using namespace std;
 class Event
 {
 public:
@@ -25,16 +27,17 @@ public:
 
 	virtual bool isClosed(DateTime& dt) const;
 	///Memproses jockeying. Menghasilkan nomor tujuan antrian jockeying. Jika tidak terjadi jockeying, mengembalikan nilai -1
+
+	///Mencetak kondisi antrian teller ke layar
+	virtual void print() = 0;
+
 	friend int Jockeying(int iOrigin);
 	
-private:
+protected:
 	///Jam tutup bank
 	DateTime Tmax;
 	///Jam buka bank
 	DateTime Tmin;
-
-	///Teller
-	Teller *T;
 
 	///ID
 	static int id;
@@ -42,30 +45,3 @@ private:
 	int jumlahTeller;
 };
 #endif
-
-int Event::id = 0;
-
-void Event::setTMax(DateTime Tmax)
-{
-	this->Tmax = Tmax;
-}
-
-void Event::setTMin(DateTime Tmin)
-{
-	this->Tmin = Tmin;
-}
-
-DateTime Event::getTMax() const
-{
-	return Tmax;
-}
-
-DateTime Event::getTMin() const
-{
-	return Tmin;
-}
-
-bool Event::isClosed(DateTime &dt) const
-{
-	return dt >= Tmax;
-}
