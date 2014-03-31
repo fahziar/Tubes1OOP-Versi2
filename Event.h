@@ -20,7 +20,7 @@ public:
 	///Menghasilkan nilai TMin
 	virtual DateTime getTMin() const;
 
-	///Memproses kedatangan pelanggan. Inputnya yaitu waktu kedatangan pelanggan.
+	///Memproses kedatangan pelanggan. Inputnya yaitu waktu kedatangan pelanggan. Prekondisi: isClosed(t) = false
 	virtual void arrive(DateTime t) = 0;
 	///Memproses pelanggan yang sudah dilayanai. Inputnya yaitu id pelanggan yang pergi
 	virtual void depart(int id) = 0;
