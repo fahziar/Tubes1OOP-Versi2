@@ -1,6 +1,7 @@
 #ifndef QUEUE_OOP_H
 #define QUEUE_OOP_H
 #include <cstdlib>
+#include <vector>
 /*! \brief
 	Kelas untuk merepresentasikan antrian dengan menggunakan array.
 */
@@ -31,7 +32,7 @@ public:
 
 private:
 	///Array yang digunakan sebgaia representasi queue
-	T *tabel;
+	std::vector<T> tabel;
 	///Ukuran dari tabel
 	int size;
 	///Jumlah elemen saat ini
@@ -44,7 +45,7 @@ Queue<T>::Queue()
 {
 	try {
 
-		this->tabel = new T[Queue::defaultSize + 1];
+		this->tabel.resize(Queue::defaultSize + 1);
 		this->size = Queue::defaultSize;
 		this->head = 1;
 		this->tail = 2;
@@ -61,7 +62,7 @@ Queue<T>::Queue(int size)
 {
 	try
 	{
-		this->tabel = new T[size + 1];
+		this->tabel.resize(size + 1);
 		this->size = size;
 		this->head = 1;
 		this->tail = 2;
@@ -74,7 +75,7 @@ Queue<T>::Queue(int size)
 template <typename T>
 Queue<T>::~Queue()
 {
-	delete[] tabel;
+	
 }
 
 template <typename T>
