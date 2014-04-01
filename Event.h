@@ -18,12 +18,6 @@ public:
 	 * @param Tmax Nilai Tmax yang baru
 	 */
 	virtual void setTMax(DateTime Tmax);
-	/**
-	 * @brief Mengeset nilai TMin
-	 * 
-	 * @param Tmin Nilai Tmin yang baru
-	 */
-	virtual void setTMin(DateTime Tmin);
 
 
 	/**
@@ -31,12 +25,6 @@ public:
 	 * @return Nilai Tmax
 	 */
 	virtual DateTime getTMax() const;
-
-	/**
-	 * @brief Getter untuk TMin
-	 * @return Nilai Tmin
-	 */
-	virtual DateTime getTMin() const;
 
 	/**
 	 * @brief Memproses kedatangan pelanggan. Prekondisi: isClosed(t) = false
@@ -50,7 +38,9 @@ public:
 	 * 
 	 * @param id id dari pelanggan yang sudah dilayani
 	 */
-	virtual void depart(int id) = 0;
+	virtual int depart(int id) = 0;
+
+	virtual void pindah(int origin,int tujuan) = 0;
 
 	/**
 	 * @brief Fungsi untuk menunjukkan apakah teller sudah tutup atau belum.
@@ -68,6 +58,8 @@ public:
 	 */
 	virtual void print() = 0;
 
+	virtual void close() = 0;
+
 	/**
 	 * @brief Memproses terjadinya jockeying.
 	 * 
@@ -75,15 +67,13 @@ public:
 	 * @param origin Id teller tempat terjadinya jockeying
 	 * @return Id teller yang dituju saat jockeying, jika tidak terjadi jockeying mengembalikan -1
 	 */
- 	friend int jockeying(Event e, int origin);
+ 	virtual int jockeying(int origin) = 0;
 
 	
 	
 protected:
 	///Jam tutup bank
 	DateTime Tmax;
-	///Jam buka bank
-	DateTime Tmin;
 
 	///ID terbesar saat ini
 	static int id;

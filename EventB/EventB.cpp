@@ -36,14 +36,15 @@ void EventB::arrive(DateTime t)
 	T[Tmin].addAntrian(Event::id);
 }
 
-void EventB::depart(int id)
+int EventB::depart(int id)
 {
 	bool found = false;
 	int i = 0;
+	int tempId
 
 	while ((!found) && (i <=jumlahTeller))
 	{
-		int tempId = T[i].deleteAntrian();
+		tempId = T[i].deleteAntrian();
 		if (tempId != id)
 		{
 			//Kembalikan kondisi antrian
@@ -62,6 +63,7 @@ void EventB::depart(int id)
 			found = true;
 		}
 	}
+	return tempId;
 }
 
 void EventB::print()
@@ -78,4 +80,24 @@ void EventB::print()
 		}
 	}
 	
+}
+
+void EventB::close()
+{
+	bool isAllEmpty = false;
+	int i;
+
+	while (!isAllEmpty)
+	{
+		isAllEmpty = true;
+
+		for(i=0; i<jumlahTeller; i++)
+		{
+			if (T[i].getPanjangAntrian() > 0)
+			{
+				isAllEmpty = false;
+				cout << "Departure " << T[i].deleteAntrian() << endl;
+			}
+		}
+	}
 }

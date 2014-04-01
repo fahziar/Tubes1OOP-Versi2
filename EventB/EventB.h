@@ -42,13 +42,17 @@ public:
 	 * 
 	 * @param id Id pelanggan yang pergi
 	 */
-	virtual void depart(int id);
+	virtual int depart(int id);
+
+	virtual void pindah(int origin,int tujuan);
 
 	/**
 	 * @brief Mencetak kondisi antrian teller ke layar.
 	 * @details Format: "Q[i] = {1,2,..}". Tidak akan mencetak antrian yang kosong
 	 */
 	virtual void print();
+
+	virtual void close();
 
 	/**
 	 * @brief Memproses terjadinya jockeying.
@@ -57,7 +61,7 @@ public:
 	 * @param origin Id teller tempat terjadinya jockeying
 	 * @return Id teller yang dituju saat jockeying, jika tidak terjadi jockeying mengembalikan -1
 	 */
-	friend int jockeying(Event e, int origin);
+	virtual int jockeying(int origin);
 
 };
 #endif

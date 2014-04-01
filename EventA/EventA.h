@@ -1,7 +1,7 @@
 #ifndef EVENT_A_OOP_H
 #define EVENT_A_OOP_H
 #include "TellerA.h"
-#include "Event.h"
+#include "../Event.h"
 
 
 /**
@@ -24,7 +24,7 @@ public:
 	 * @param Tmin Waktu minimum pelanggan dilayani
 	 * @param jumlahTeller Jumlah teller yang ada.
 	 */
-	EventA(DateTime Tmax, DateTime Tmin, int jumlahTeller);
+	EventA(DateTime Tmax,int jumlahTeller);
 	///Destruktor dari EventA
 	~EventA();
 
@@ -34,7 +34,7 @@ public:
 	 * @brief Memproses kedatangan pelanggan.
 	 * 
 	 * @param t Waktu kedatangan pelanggan
-	 */ I
+	 */
 	virtual void arrive(DateTime t);
 
 	/**
@@ -42,13 +42,17 @@ public:
 	 * 
 	 * @param id Id pelanggan yang pergi
 	 */
-	virtual void depart(int id);
+	virtual int depart(int id);
+
+	virtual void pindah(int origin,int tujuan);
 
 	/**
 	 * @brief Mencetak kondisi antrian teller ke layar.
 	 * @details Format: "Q[i] = {1,2,..}". Tidak akan mencetak antrian yang kosong
 	 */
 	virtual void print();
+
+	virtual void close();
 
 	/**
 	 * @brief Memproses terjadinya jockeying.
@@ -57,7 +61,7 @@ public:
 	 * @param origin Id teller tempat terjadinya jockeying
 	 * @return Id teller yang dituju saat jockeying, jika tidak terjadi jockeying mengembalikan -1
 	 */
- 	friend int jockeying(Event e, int origin);
+ 	virtual int jockeying(int origin);
 
 };
 #endif

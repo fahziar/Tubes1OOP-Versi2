@@ -1,12 +1,11 @@
 #include "EventA.h"
 
 using namespace std;
-EventA::EventA(DateTime Tmax, DateTime Tmin, int jumlahTeller)
+EventA::EventA(DateTime Tmax,int jumlahTeller)
 {
 	T.resize(jumlahTeller);
 	this->jumlahTeller = jumlahTeller;
 
-	this->Tmin = Tmin;
 	this->Tmax = Tmax;
 
 }
@@ -36,14 +35,15 @@ void EventA::arrive(DateTime t)
 	T[Tmin].addAntrian(Event::id);
 }
 
-void EventA::depart(int id)
+int EventA::depart(int id)
 {
 	bool found = false;
 	int i = 0;
+	int tempId;
 
 	while ((!found) && (i <=jumlahTeller))
 	{
-		int tempId = T[i].deleteAntrian();
+		tempId = T[i].deleteAntrian();
 		if (tempId != id)
 		{
 			//Kembalikan kondisi antrian
@@ -62,6 +62,13 @@ void EventA::depart(int id)
 			found = true;
 		}
 	}
+	return i;
+}
+
+void EventA::pindah(int origin,int tujuan)
+{
+	int temp = T[origin].deleteLastAntrian();
+	T[tujuan].addAntrian(temp);
 }
 
 void EventA::print()
@@ -78,4 +85,42 @@ void EventA::print()
 		}
 	}
 	
+}
+
+void EventA::close()
+{
+	bool isAllEmpty = false;
+	int i;
+
+	while (!isAllEmpty)
+	{
+		isAllEmpty = true;
+
+		for(i=0; i<jumlahTeller; i++)
+		{
+			if (T[i].getPanjangAntrian() > 0)
+			{
+				isAllEmpty = false;
+				cout << "Departure " << T[i].deleteAntrian() << endl;
+			}
+		}
+	}
+}
+
+int EventA::jockeying(int origin)
+{
+	int i = 0;
+	int tujuan = -1;
+	while ((i<jumlahTeller)&&(tujuan == -1))
+	{
+		if (i != origin)
+		{
+			if ((T[origin].getPanjangAntrian() - T[i].getPanjangAntrian()) > 2)
+			{
+				tujuan = i;
+			}
+		}
+		i++;
+	}
+	return tujuan;
 }
