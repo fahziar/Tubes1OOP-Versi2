@@ -3,31 +3,62 @@
 #include <iostream>
 #include <queue>
 #include "Teller.h"
-/*! \brief
-	Kelas ini digunakan untuk merepresentasikan teler. Queue yang digunakan adalah queue STL.
-*/
 using namespace std;
+
+/**
+ * @brief Kelas ini digunakna untuk merepresentasikan Teller. Queue yang digunakan adalah queue buatan sendiri
+ * 
+ */
 template <typename T>
 class TellerB : public Teller
 {
 private:
-	std::queue<T> q;
+	///Queue yang akan digunakan sebagai antrian di depan teller
+	queue<T> q;
 public:
 	//Fungsi dari queue
-	///Menambah elemen baru ke paling belakang antrian
+	/**
+	 * @brief Menambah elemen baru ke paling belakang antrian
+	 * 
+	 * @param elemen Elemen yang akan ditambahkan
+	 */
 	void addAntrian(T elemen);
-	///Menghapus elemen paling depan antrian. Mengembalikan elemen yang dihapus
+	
+	/**
+	 * @brief ///Menghapus elemen paling depan antrian.
+	 * @return Elemen yang dihapus
+	 */
 	T deleteAntrian();
-	///Menghapus elemen paling belakang antrian. Mengembalikan elemen yang dihapus.
+
+	/**
+	 * @brief Menghapus elemen paling belakang antrian.
+	 * @return Elemen yang dihapus
+	 */
 	T deleteLastAntrian();
 
-	///Untuk mendapatkan state teller.
+	/**
+	 * @brief Mendapatkan state teller.
+	 * @return State dari teller
+	 */
 	virtual int getState();
-	///Untuk mengeset state dari teller.
+
+	/**
+	 * @brief Mengeset state teller.
+	 * 
+	 * @param state State baru untuk teller.
+	 */
 	virtual void setState(int state);
-	///Mengeprint isi antrian ke layar
+
+	/**
+	 * @brief Menampilkan isi antria ke layar
+	 * @details Format tampilan: {1,2,...}
+	 */
 	virtual void print();
 
+	/**
+	 * @brief Mendapatkan panjang antrian
+	 * @return Panjang antrian
+	 */
 	virtual int getPanjangAntrian();
 
 };
