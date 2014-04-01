@@ -1,6 +1,6 @@
 #include "DateTime.h"
 #include "Event.h"
-#include "EventA.h"
+#include "EventB.h"
 #include <iostream>
 
 using namespace std;
@@ -13,7 +13,7 @@ int main()
 	int jml_teller,id,tempId;
 	cin >> Tmax;
 	cin >> jml_teller;
-	Event *e = new EventA(Tmax,jml_teller);
+	Event *e = new EventB(Tmax,jml_teller);
 	TblJokey = new int[jml_teller];
 	do
 	{

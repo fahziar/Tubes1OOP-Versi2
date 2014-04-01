@@ -1,7 +1,7 @@
 #ifndef EVENT_A_OOP_H
 #define EVENT_A_OOP_H
 #include "TellerB.h"
-#include "Event.h"
+#include "../Event.h"
 
 
 /**
@@ -24,7 +24,7 @@ public:
 	 * @param Tmin Waktu minimum pelanggan dilayani
 	 * @param jumlahTeller Jumlah teller yang ada.
 	 */
-	EventB(DateTime Tmax, DateTime Tmin, int jumlahTeller);
+	EventB(DateTime Tmax, int jumlahTeller);
 	///Destruktor dari EventB
 	~EventB();
 
@@ -34,7 +34,7 @@ public:
 	 * @brief Memproses kedatangan pelanggan.
 	 * 
 	 * @param t Waktu kedatangan pelanggan
-	 */ I
+	 */
 	virtual void arrive(DateTime t);
 
 	/**

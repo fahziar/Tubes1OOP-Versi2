@@ -1,12 +1,11 @@
 #include "EventB.h"
 
 using namespace std;
-EventB::EventB(DateTime Tmax, DateTime Tmin, int jumlahTeller)
+EventB::EventB(DateTime Tmax, int jumlahTeller)
 {
 	T.resize(jumlahTeller);
 	this->jumlahTeller = jumlahTeller;
 
-	this->Tmin = Tmin;
 	this->Tmax = Tmax;
 
 }
@@ -40,7 +39,7 @@ int EventB::depart(int id)
 {
 	bool found = false;
 	int i = 0;
-	int tempId
+	int tempId;
 
 	while ((!found) && (i <=jumlahTeller))
 	{
@@ -63,7 +62,13 @@ int EventB::depart(int id)
 			found = true;
 		}
 	}
-	return tempId;
+	return i;
+}
+
+void EventB::pindah(int origin,int tujuan)
+{
+	int temp = T[origin].deleteLastAntrian();
+	T[tujuan].addAntrian(temp);
 }
 
 void EventB::print()
@@ -100,4 +105,22 @@ void EventB::close()
 			}
 		}
 	}
+}
+
+int EventB::jockeying(int origin)
+{
+	int i = 0;
+	int tujuan = -1;
+	while ((i<jumlahTeller)&&(tujuan == -1))
+	{
+		if (i != origin)
+		{
+			if ((T[origin].getPanjangAntrian() - T[i].getPanjangAntrian()) > 2)
+			{
+				tujuan = i;
+			}
+		}
+		i++;
+	}
+	return tujuan;
 }
