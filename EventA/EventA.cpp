@@ -1,31 +1,81 @@
 #include "EventA.h"
 
-EventA::EventA()
+using namespace std;
+EventA::EventA(DateTime Tmax, DateTime Tmin, int jumlahTeller)
 {
+	T.resize(jumlahTeller);
+	this->jumlahTeller = jumlahTeller;
+
+	this->Tmin = Tmin;
+	this->Tmax = Tmax;
 
 }
+
 EventA::~EventA()
 {
 
 }
-void EventA::SetTeller(int n)
+
+
+void EventA::arrive(DateTime t)
 {
-	this->jumlahTeller = n;
-	TA = new TellerA[n];
-	for (int i=0;i<n;i++)
+	int i;
+	int Tmin = 0;
+	int min = T[0].getPanjangAntrian();
+
+	for(i=1; i<jumlahTeller; i++)
 	{
-		TA[i] = new TellerA<int>();
+		if (T[i].getPanjangAntrian() < min)
+		{
+			Tmin = i;
+			min = T[i].getPanjangAntrian();
+		}
 	}
+
+	Event::id++;
+	T[Tmin].addAntrian(Event::id);
 }
-void EventA::arrive(DateTime dt)
-{
-	if ((dt >= Tmin)&& (Tmax >= dt))
-	{
-		id++;
-		TA[id%jumlahTeller].addAntrian(id);
-	}
-}
+
 void EventA::depart(int id)
 {
+	bool found = false;
+	int i = 0;
 
+	while ((!found) && (i <=jumlahTeller))
+	{
+		int tempId = T[i].deleteAntrian();
+		if (tempId != id)
+		{
+			//Kembalikan kondisi antrian
+			int j, temp;;
+			int panjangAntrian = T[i].getPanjangAntrian();
+			T[i].addAntrian(tempId);
+			for (j=0; j<panjangAntrian-1; j++)
+			{
+				temp = T[i].deleteAntrian();
+				T[i].addAntrian(temp);
+			}
+
+			//increment i
+			i++;
+		} else {
+			found = true;
+		}
+	}
+}
+
+void EventA::print()
+{
+	int i ;
+
+	for (i=0; i<jumlahTeller; i++)
+	{
+		if (T[i].getPanjangAntrian() != 0)
+		{
+			cout << "Q[" << i << "] = ";
+			T[i].print();
+			cout << endl;
+		}
+	}
+	
 }
