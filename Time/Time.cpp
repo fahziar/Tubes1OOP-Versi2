@@ -1,4 +1,7 @@
 #include "Time.h"
+#include <string>
+#include <sstream>
+#include <iostream>
 
 Time::Time()
 {
@@ -100,4 +103,16 @@ bool Time::operator==(const Time& t) const
 Time::~Time()
 {
 
+}
+
+istream& operator>> (istream& input,Time& t)
+{
+	string s_input;
+	stringstream ss_input;
+	input >> s_input;
+	s_input.replace(2,1," ");
+	s_input.replace(5,1," ");
+	ss_input << s_input;
+	ss_input >> t.jam >> t.menit >> t.detik;
+	return input;
 }

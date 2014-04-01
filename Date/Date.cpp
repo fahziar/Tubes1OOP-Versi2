@@ -1,4 +1,7 @@
 #include "Date.h"
+#include <string>
+#include <sstream>
+#include <iostream>
 
 using namespace std;
 
@@ -93,4 +96,16 @@ void Date::setBulan(int bulan)
 void Date::setTahun(int tahun)
 {
 	this->tahun = tahun;
+}
+
+istream& operator>> (istream& input,Date& date)
+{
+	string s_input;
+	stringstream ss_input;
+	input >> s_input;
+	s_input.replace(2,1," ");
+	s_input.replace(5,1," ");
+	ss_input << s_input;
+	ss_input >> date.hari >> date.bulan >> date.tahun;
+	return input;
 }

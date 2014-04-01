@@ -2,6 +2,8 @@
 #define DATE_TIME_H
 #include "Time.h"
 #include "Date.h"
+#include <iostream>
+using namespace std;
 /*! \brief
 	Kelas ini digunakan untuk merepresentasikan date dan time
 */
@@ -23,6 +25,8 @@ public:
 
 	//Operator
 	bool operator>=(const DateTime&) const;
+
+	friend istream& operator>> (istream&,DateTime&);
 
 	
 private:

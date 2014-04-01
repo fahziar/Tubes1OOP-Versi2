@@ -1,4 +1,7 @@
 #include "DateTime.h"
+#include <string>
+#include <sstream>
+#include <iostream>
 
 DateTime::DateTime()
 {
@@ -37,4 +40,15 @@ bool DateTime::operator>=(const DateTime& dt) const
 	} else {
 		return false;
 	}
+}
+
+istream& operator>> (istream& input,DateTime& dt)
+{
+	string s_input;
+	stringstream ss_input;
+	input >> s_input;
+	s_input.replace(10,1," ");
+	ss_input << s_input;
+	ss_input >> dt.date >> dt.time;
+	return input;
 }

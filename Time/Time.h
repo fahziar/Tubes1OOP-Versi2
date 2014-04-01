@@ -1,5 +1,7 @@
 #ifndef TIME_OOP_H
 #define TIME_OOP_H
+#include <iostream>
+using namespace std;
 /*! \brief
 	Kelas untuk merepresentasikan waktu dalam jam, menit dan detik.
 */
@@ -34,6 +36,7 @@ public:
 	bool operator>=(const Time T) const;
 
 	bool operator==(const Time&) const;
+	friend istream& operator>> (istream&,Time&);
 private:
 	///Variabel yang berisi jam.
 	int jam;

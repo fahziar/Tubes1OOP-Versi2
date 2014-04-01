@@ -9,6 +9,7 @@ int main(int argc, char const *argv[])
 
 	int input;
 	bool quit = false;
+	cin >> dt;
 
 	do
 	{

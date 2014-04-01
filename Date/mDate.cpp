@@ -6,6 +6,7 @@ int main()
 {
 	Date date1;
 	int x, y, z;
+	cin >> date1;
 	cin >> x;
 	cin >> y;
 	cin >> z;

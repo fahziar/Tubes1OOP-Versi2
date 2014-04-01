@@ -1,5 +1,7 @@
 #ifndef DATE_OOP_H
 #define DATE_OOP_H
+#include <iostream>
+using namespace std;
 /*! \brief
 	Kelas yang digunakan untuk merepresentasikan tanggal dalam bentuk hari, bulan dan tahun.
 */
@@ -38,6 +40,8 @@ public:
 	void setBulan(int);
 	///Setter untuk tahun.
 	void setTahun(int);
+	///Operator istream untuk Date
+	friend istream& operator>> (istream&,Date&);
 
 };
 

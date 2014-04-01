@@ -7,6 +7,7 @@ int main(int argc, char const *argv[])
 	Time t1;
 	int input;
 	int x, y, z;
+	cin >> t1;
 
 	cin >> x;
 	cin >> y;
