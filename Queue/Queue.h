@@ -2,41 +2,80 @@
 #define QUEUE_OOP_H
 #include <cstdlib>
 #include <vector>
-/*! \brief
-	Kelas untuk merepresentasikan antrian dengan menggunakan array.
-*/
+/**
+ * @brief Kelas template dari struktur data queue.
+ * 
+ * @tparam T Tipe data dari elemen queue
+ */
 template <typename T>
 class Queue
 {
 public:
-	///Konstruktor. Ukuruan dari antrian dibuat sesuai dengan default size.
+	/**
+	 * @brief Konstruktor. Jumlah elemen maksimal yang bisa ditampung queue diset sesuai defaultSize (50)
+	 */
 	Queue();
-	///Konstruktor. Parameter akan menjadi ukuran dari queue
+
+	/**
+	 * @brief Kosntruktor. Jumlah elemen maksimal yang bisa ditampung queue sesuai dengan parameter.
+	 * 
+	 * @param size Jumlah elemen maksium dari queue
+	 */
 	Queue(int size);
-	//Desktruktor
+
+	///Desktruktor
 	~Queue();
 
-	///Menambah elemen baru di akhir antrian.
+
+	/**
+	 * @brief Menambah elemen baru di akhir antrian.
+	 * 
+	 * @param newElement Elemen baru yang akan ditambah
+	 */
 	void Add(T newElement);
-	///Menghapus elemen di awal antrian. Fungsi ini mengembalika elemen yang dihapus.
+
+	/**
+	 * @brief Menghapus elemen di awal antrian. Prekondisi: queue tidak penuh
+	 * @return Elemen yang dihapus
+	 */
 	T Delete();
-	///Menghapus elemen di akhir antrian. Fungsi ini mengembalika elemen yang dihapus.
+
+	/**
+	 * @brief Menghapus elemen di akhir antrian.
+	 * @return Elemen yang dihapus
+	 */
 	T DeleteLast();
 
-	///Mengecek apakah queue telah penuh.
+
+	/**
+	 * @brief Mengecek apakah queue telah penuh.
+	 * @return Mengembalikan true jika queue telah penuh dan sebaliknya
+	 */
 	bool isFull() const;
-	///Mengembalikan jumlah pada queue saat ini
+
+	/**
+	 * @brief Mendapatkan jumlah elemen saat ini
+	 * @return Jumlah elemen yang ada queue.
+	 */
 	int NbElement() const;
-	///Mengembalikan batas maksimal queue saat ini
+
+	/**
+	 * @brief Mendapatkan jumlah elemen maksimum yang dapat ditampung queue
+	 * @return Jumlah elemen maksimum yang dapat ditampung queue.
+	 */
 	int getSize() const;
 
 private:
-	///Array yang digunakan sebgaia representasi queue
+	///Array yang digunakan sebagai representasi queue
 	std::vector<T> tabel;
+
 	///Ukuran dari tabel
 	int size;
+
 	///Jumlah elemen saat ini
 	int head, tail;
+
+	///Default size dari queue
 	static const int defaultSize = 50;
 };
 
