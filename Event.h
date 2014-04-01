@@ -3,35 +3,81 @@
 #include "DateTime.h"
 #include "Teller.h"
 #include <vector>
-/*! \brief
-	Kelas abstract untuk merepresentasikan event.
-*/
+
 using namespace std;
+/**
+ * @brief Kelas abstrak untuk Event
+ * 
+*/
 class Event
 {
 public:
-	///Mengeset nilai TMax
+	/**
+	 * @brief Mengeset nilai TMax
+	 * 
+	 * @param Tmax Nilai Tmax yang baru
+	 */
 	virtual void setTMax(DateTime Tmax);
-	///Mengeset nilai TMin
+	/**
+	 * @brief Mengeset nilai TMin
+	 * 
+	 * @param Tmin Nilai Tmin yang baru
+	 */
 	virtual void setTMin(DateTime Tmin);
 
-	///Menghasilkan nilai TMax
+
+	/**
+	 * @brief Getter untuk TMax
+	 * @return Nilai Tmax
+	 */
 	virtual DateTime getTMax() const;
-	///Menghasilkan nilai TMin
+
+	/**
+	 * @brief Getter untuk TMin
+	 * @return Nilai Tmin
+	 */
 	virtual DateTime getTMin() const;
 
-	///Memproses kedatangan pelanggan. Inputnya yaitu waktu kedatangan pelanggan. Prekondisi: isClosed(t) = false
+	/**
+	 * @brief Memproses kedatangan pelanggan. Prekondisi: isClosed(t) = false
+	 * 
+	 * @param t Waktu kedatangan pelanggan.
+	 */
 	virtual void arrive(DateTime t) = 0;
-	///Memproses pelanggan yang sudah dilayanai. Inputnya yaitu id pelanggan yang pergi
+
+	/**
+	 * @brief Memproses pelanggan yang sudah dilayanai. Inputnya yaitu id pelanggan yang pergi
+	 * 
+	 * @param id id dari pelanggan yang sudah dilayani
+	 */
 	virtual void depart(int id) = 0;
 
+	/**
+	 * @brief Fungsi untuk menunjukkan apakah teller sudah tutup atau belum.
+	 * @details Syara teller tutup: dt >= Tmax
+	 * 
+	 * @param dt Waktu yang akan dicek
+	 * 
+	 * @return Menghasilkan true jika toko sudah tutup dan sebaliknya.
+	 */
 	virtual bool isClosed(DateTime& dt) const;
-	///Memproses jockeying. Menghasilkan nomor tujuan antrian jockeying. Jika tidak terjadi jockeying, mengembalikan nilai -1
 
-	///Mencetak kondisi antrian teller ke layar
+	/**
+	 * @brief Mencetak kondisi antrian teller ke layar.
+	 * @details Format: "Q[i] = {1,2,..}". Tidak akan mencetak antrian yang kosong
+	 */
 	virtual void print() = 0;
 
-	friend int Jockeying(int iOrigin);
+	/**
+	 * @brief Memproses terjadinya jockeying.
+	 * 
+	 * @param e Event tempat terjadinya jockeying
+	 * @param origin Id teller tempat terjadinya jockeying
+	 * @return Id teller yang dituju saat jockeying, jika tidak terjadi jockeying mengembalikan -1
+	 */
+ 	friend int jockeying(Event e, int origin);
+
+	
 	
 protected:
 	///Jam tutup bank
@@ -39,9 +85,10 @@ protected:
 	///Jam buka bank
 	DateTime Tmin;
 
-	///ID
+	///ID terbesar saat ini
 	static int id;
 
+	///Jumlah teller saat ini.
 	int jumlahTeller;
 };
 #endif
