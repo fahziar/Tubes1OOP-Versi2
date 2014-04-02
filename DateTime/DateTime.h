@@ -13,9 +13,9 @@ public:
 	///Konstruktor dari kelas DateTime
 	DateTime();
 	
-	///Untuk mengeset Date
+	///Setter untuk date
 	void setDate(Date);
-	//Untuk mengeset Time
+	///Setter untuk time
 	void setTime(Time);
 
 	///Getter untuk mendapatkan objek date
@@ -23,9 +23,17 @@ public:
 	///Setter untuk mendapatkan objek time
 	Time getTime();
 
-	//Operator
+	/**
+	 * @brief Membandingkan dua DateTime apakah date tersebut lebih akhir atau sama.
+	 * 
+	 * 
+	 * @return Mengembalikan true jika dateTime1 >= dateTime2
+	 */
 	bool operator>=(const DateTime&) const;
 
+	/**
+	 * @brief Operator untuk mendapatkan DateTime dari istream
+	*/
 	friend istream& operator>> (istream&,DateTime&);
 
 	

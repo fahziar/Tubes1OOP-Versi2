@@ -21,7 +21,6 @@ public:
 	 * @brief Konstruktor dari EventA
 	 * 
 	 * @param Tmax Waktu maksimum pelanggan dilayani
-	 * @param Tmin Waktu minimum pelanggan dilayani
 	 * @param jumlahTeller Jumlah teller yang ada.
 	 */
 	EventA(DateTime Tmax,int jumlahTeller);
@@ -44,6 +43,12 @@ public:
 	 */
 	virtual int depart(int id);
 
+	/**
+	 * @brief Memindahkan antrian terakhir pada teller origin ke teller tujuan. Prekondisi: Teller tidak kosong
+	 * 
+	 * @param origin Teller asal
+	 * @param tujuan Teller tujuan
+	 */
 	virtual void pindah(int origin,int tujuan);
 
 	/**
@@ -52,12 +57,19 @@ public:
 	 */
 	virtual void print();
 
+	/**
+	 * @brief Memproses tutupnya teller.
+	 * @details Method ini akan mengosongkan semua antrian di teller sambil menampilkan elemen teller yang keluar di layar.
+	 * Format tampilannya: 
+	 * Depart 1
+	 * Depart 2
+	 * ...
+	 */
 	virtual void close();
 
 	/**
 	 * @brief Memproses terjadinya jockeying.
 	 * 
-	 * @param e Event tempat terjadinya jockeying
 	 * @param origin Id teller tempat terjadinya jockeying
 	 * @return Id teller yang dituju saat jockeying, jika tidak terjadi jockeying mengembalikan -1
 	 */

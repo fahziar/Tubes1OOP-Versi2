@@ -23,9 +23,23 @@ public:
 	///Operator Asignment date.
 	Date& operator= (const Date&);
 
-	bool operator>= (const Date&) const;
+	/**
+	 * @brief Membandingkan dua date apakah date tersebut lebih akhir atau sama.
+	 * 
+	 * @param  date Date yang akan dibandingkan
+	 * 
+	 * @return Mengembalikan true jika date1 >= date2
+	 */
+	bool operator>= (const Date& date) const;
 
-	bool operator== (const Date&) const;
+	/**
+	 * @brief Membandingkan dua date apakah date tersebut sama.
+	 * 
+	 * @param date Date yang akan dibandingkan
+	 * 
+	 * @return Mengembalikan true jika date1 == date2
+	 */
+	bool operator== (const Date& date) const;
 
 	///Getter untuk hari.
 	int getHari();
@@ -40,7 +54,7 @@ public:
 	void setBulan(int);
 	///Setter untuk tahun.
 	void setTahun(int);
-	///Operator istream untuk Date
+	///Operator untuk mengeset Date dari istream
 	friend istream& operator>> (istream&,Date&);
 
 };

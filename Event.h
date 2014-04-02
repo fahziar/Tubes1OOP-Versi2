@@ -40,6 +40,12 @@ public:
 	 */
 	virtual int depart(int id) = 0;
 
+	/**
+	 * @brief Memindahkan antrian terakhir pada teller origin ke teller tujuan. Prekondisi: Teller tidak kosong
+	 * 
+	 * @param origin Teller asal
+	 * @param tujuan Teller tujuan
+	 */
 	virtual void pindah(int origin,int tujuan) = 0;
 
 	/**
@@ -58,12 +64,19 @@ public:
 	 */
 	virtual void print() = 0;
 
+	/**
+	 * @brief Memproses tutupnya teller.
+	 * @details Method ini akan mengosongkan semua antrian di teller sambil menampilkan elemen teller yang keluar di layar.
+	 * Format tampilannya: 
+	 * Depart 1
+	 * Depart 2
+	 * ...
+	 */
 	virtual void close() = 0;
 
 	/**
 	 * @brief Memproses terjadinya jockeying.
 	 * 
-	 * @param e Event tempat terjadinya jockeying
 	 * @param origin Id teller tempat terjadinya jockeying
 	 * @return Id teller yang dituju saat jockeying, jika tidak terjadi jockeying mengembalikan -1
 	 */
