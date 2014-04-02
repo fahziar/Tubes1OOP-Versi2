@@ -1,7 +1,7 @@
 #ifndef TELLER_OOP_A
 #define TELLER_OOP_A
 #include <iostream>
-#include "Teller.h"
+#include "../Teller.h"
 #include "Queue.h"
 using namespace std;
 

@@ -30,7 +30,6 @@ int main()
 			if (TblJokey[tempId] != -1)
 			{
 				e->pindah(tempId,TblJokey[tempId]);
-				cout << "Terjadi jockeying" << endl;
 			}
 		}
 		else if (pil == "A")
